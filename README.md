@@ -25,20 +25,21 @@ instruct Travis to use. You don’t need to install anything.
 
 Add the following as a custom [Travis build step](https://docs.travis-ci.com/user/customizing-the-build#Customizing-the-Build-Step).
 
-    bash <(curl -fsSL https://github.com/everypolitician/ensure-regression-tests/raw/v0.1.0/ensure-regression-tests)
-
-This will run v0.1.0 of the script (see [all versions available](https://github.com/everypolitician/ensure-regression-tests/releases)).
-
-If you want to use a specific version of the script, or perhaps always want the
-latest one, be explicit in the URL you supply to `curl`. That is, you can use
-the URL to a specific git commit SHA1 or tag within this
-`ensure-regression-tests` repo. For example, to execute the most recent version
-from the `master` branch (rather than being locked to a specific commit or release):
-
     bash <(curl -fsSL https://github.com/everypolitician/ensure-regression-tests/raw/master/ensure-regression-tests)
 
-You can see this in use in
-[this live example](https://github.com/everypolitician/viewer-sinatra/blob/6058146aa548cde2f7db9cc98ed564e01577e8ff/.travis.yml#L13).
+This will run the latest version of the script (from `master` in this
+`ensure-regression-tests` repo). 
+See [this live example](https://github.com/everypolitician/viewer-sinatra/blob/6058146aa548cde2f7db9cc98ed564e01577e8ff/.travis.yml#L13),
+which shows the `bash` command in context.
+
+If you want to use a specific version of the script, be explicit in the URL you
+supply to `curl`. That is, you can use the URL to a specific git commit SHA1 or
+tag within this `ensure-regression-tests` repo. For example, to execute the
+`v0.1.0` release, do:
+
+    bash <(curl -fsSL https://github.com/everypolitician/ensure-regression-tests/raw/v0.1.0/ensure-regression-tests)
+
+See [all versions available](https://github.com/everypolitician/ensure-regression-tests/releases)).
 
 ## Details
 
