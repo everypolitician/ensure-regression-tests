@@ -72,14 +72,17 @@ you’re not adding a new feature, you’re refactoring an existing one (see bel
 ### Refactor branch
 
 Here’s the override case. If you’re just refactoring — you’re not adding a
-feature, you’re not fixing a bug — then you don’t want to add new tests: you
-emphatically want to show that you haven’t broken the existing ones.
+feature, you’re not fixing a bug — then you shouldn’t be adding new tests here
+anyway. More importantly, you want to know your refactoring hasn’t broken
+anything, so you _need_ the tests on your refactor branch to pass on the target
+branch too. That’s contrary to what `ensure-regression-tests` normally enforces.
 
-So in this case the script shouldn’t insist on failures on the target branch.
-This is only OK because you’re explicitly refactoring.
+So, if you’re refactoring, you should deliberately suppress
+`ensure-regression-tests`, so Travis won’t reject your pull request for having
+tests that pass on the target branch.
 
-Make this happen by explicitly including the word `refactor` somewhere in your
-branch name. This works because `ensure-regression-tests` will back off from
-any branches so named.
+Make this happen by explicitly including the word `refactor` in the name of
+your branch.
 
-
+This works because `ensure-regression-tests` will politely back off if the pull
+request branch on which it’s been invoked contains `refactor` in its name.
