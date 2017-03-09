@@ -48,9 +48,9 @@ Broadly speaking there are three situations where this plays out:
 ### New feature branch
 
 If you’re adding a new feature, you’d expect to add new tests for that new
-feature. You’d also expect those to fail because by definition the feature your
-tests are testing isn’t on the target branch (yet) — if it is, you’re not
-adding a new feature, you’re refactoring a new one (see below).
+feature. You’d also expect those to fail on the target branch because by
+definition the feature your tests are testing isn’t there (yet) — if it is,
+you’re not adding a new feature, you’re refactoring an existing one (see below).
 
 ### Bug-fix branch
 
