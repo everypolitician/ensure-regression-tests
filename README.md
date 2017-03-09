@@ -1,13 +1,19 @@
 # ensure-regression-tests
 
 Add `ensure-regression-tests` to your Travis build to run tests *twice* when
-you create a pull request: once on the branch you’ve been working on, and once
-on the branch you’re targeting (commonly, this will be `master`). The tests on
-your branch *must pass* (of course)... but tests on the target branch *must
-fail*.
+you create a pull request. Specifically, this uses the tests from the pull
+request branch (that's the branch you've been working on) and runs them twice:
 
-Yes, Travis will reject your pull request if the **tests pass** on the target
-branch.
+* once on the branch you’ve been working on (this is what you'd expect, and
+  what you almost certainly did locally anyway)
+
+* once on the branch you’re targeting (commonly, this will be `master`).
+
+The tests on your branch *must pass* (of course)... but tests on the target
+branch *must fail*.
+
+Yes, Travis will reject your pull request if all the tests on your branch
+*pass** on the target branch.
 
 There’s one useful exception: see the details below.
 
