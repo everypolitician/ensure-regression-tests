@@ -45,22 +45,29 @@ See [all versions available](https://github.com/everypolitician/ensure-regressio
 
 Broadly speaking there are three situations where this plays out:
 
+### Bug-fix branch
+
+If you’re fixing a bug, that bug snuck in despite the tests all passing on the
+target branch. This is at the heart of what `ensure-regression-tests` is
+addressing:
+
+* you’ve found a bug
+* your existing tests didn’t catch that bug
+* so when fixing that bug, you add a test (or tests)
+* *but*... that test must fail against the previous code (which is on the
+  target branch) — if it doesn’t, then your test is not actually testing what
+  you think it is
+
+In this way, `ensure-regression-tests` ensures you not only fix the bug, but
+that Travis will test for it now and from here on. Beautiful regression
+testing; that bug is never going to sneak back in.
+
 ### New feature branch
 
 If you’re adding a new feature, you’d expect to add new tests for that new
 feature. You’d also expect those to fail on the target branch because by
 definition the feature your tests are testing isn’t there (yet) — if it is,
 you’re not adding a new feature, you’re refactoring an existing one (see below).
-
-### Bug-fix branch
-
-If you’re fixing a bug, that bug snuck in despite the tests all passing on the
-target branch. So you’ve certainly got to add new tests to catch this bug on
-your (pull request’s) branch, and those tests must fail on the target branch
-(because if they didn’t, it wouldn’t be a bug, would it?). So
-`ensure-regression-tests` ensures you not only fix the bug, but that Travis
-will test for it now and from here on. Beautiful regression testing; that bug
-is never going to sneak back in.
 
 ### Refactor branch
 
