@@ -22,6 +22,7 @@ if [ -z "${target_branch}" ]; then
 fi
 
 # Checkout the branch that the pull request is targeting...
+git fetch
 git checkout "${target_branch}"
 
 # ...but revert the test code back to the pull request version
