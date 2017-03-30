@@ -22,6 +22,7 @@ if [ -z "${target_branch}" ]; then
 fi
 
 # Checkout the branch that the pull request is targeting...
+git remote set-branches origin "${target_branch}"
 git fetch
 git checkout "${target_branch}"
 
