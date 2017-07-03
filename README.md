@@ -41,6 +41,12 @@ tag within this `ensure-regression-tests` repo. For example, to execute the
 
 See [all versions available](https://github.com/everypolitician/ensure-regression-tests/releases)).
 
+#### Note:
+
+Additional travis steps should come _before_ `ensure-regression-tests`.
+
+`ensure-regression-tests` does not clean up after itself, and so any subsequent build steps will be run against `ensure-regression-tests`'s target branch. Placing additional steps before `ensure-regression-tests` ensures they are run against the current branch.
+
 ## Details
 
 Broadly speaking there are three situations where this plays out:
